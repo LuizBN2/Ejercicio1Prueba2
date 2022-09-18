@@ -31,7 +31,7 @@ public class Paciente {
     private String descripcionEnfermedad;
 
     //nuevo
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     @JoinColumn(name = "registroMedico")
     @JsonIgnoreProperties(value="registroMedico")
     private Profesional profesionales;
