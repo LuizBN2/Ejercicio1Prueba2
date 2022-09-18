@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="a9a1e971-e9db-40f3-b5d4-6a4d9370865e" name="postgres" url="jdbc:postgresql://db.hdozmzijnduhynjhawhs.supabase.co/postgres" driverClass="org.postgresql.Driver" />
+    </data-sources>
+  </component>
+</project>

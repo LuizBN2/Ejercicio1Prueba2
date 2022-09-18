@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--    <link href="styles.css" rel="stylesheet"/> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+    <title>Hola Soy un título</title>
+</head>
+<body>
+<!--Hola mundo soy un html
+<h1>Título h1</h1>
+<h2>Título h2</h2>
+<h3>Título h3</h3>
+<h4>Título h4</h4>
+<h5>Título h5</h5>
+<h6>Título h6</h6>
+<p>Esto es un párrafo, porque contiene mucho texto con varias líneas</p>
+<span>Esto es un texto corto, o frase pequeñas</span>
+<a href="https://lms.misiontic2022udea.com/">Esto es un enlace a la plataforma lms</a>
+
+<form>
+    <input placeholder="ingrese su nombre" type="text"/>
+    <input type="number">
+    <input type="date">
+    <input type="file">
+
+    <button class="boton-primario">Esto es un botón</button>
+
+</form>
+-->
+<main>
+    <div class="row align-items-center" style="height:50px; background: skyblue">
+            <div sec:authorize="isAuthenticated()">
+                <h4 th:text="'Bienvenido ' + ${usuario.getEmail()}" align="right"></h4>
+            </div>
+
+    </div>
+
+
+    <div class="px-4 py-5 my-5 text-center">
+        <img src="img/hospital.jpg" class="d-block mx-auto mb-4" height="200" alt="PostgreSQL"/>
+        <h1 class="display-5 fw-bold">Hospital</h1>
+        <div class="col-lg-6 mx-auto">
+            <p>Donde tu vida es nuestra prioridad</p>
+                <!--
+                <a href="/pacientes" type="button" class="btn btn-primary btn-lg px-4 gap-3">Ir al aplicativo</a>
+
+                modificamos aqui con Auth0
+
+                -->
+            <div sec:authorize="!isAuthenticated()">
+                <a th:href="@{/oauth2/authorization/auth0}" class="btn btn-primary btn-lg px-4 gap-3">Iniciar Sesión</a>
+            </div>
+
+            <!-- cuando esté autenticado -->
+
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{/pacientes}" class="btn btn-primary btn-lg px-4 gap-3">Ir al aplicativo</a>
+            </div>
+
+
+
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4">Detalles</button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

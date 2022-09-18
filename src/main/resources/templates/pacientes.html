@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pacientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+<body>
+<!--Esta es la página principal de los pacientes -->
+<main>
+    <div class="px-4 py-3 my-2 text-center">
+        <div class="px-4 py-3 my-2 text-center">
+            <h1 class="display-5 fw-bold mb-4">Pacientes</h1>
+            <a href="/pacientes/nuevo" class="btn btn-outline-secondary btn-lg px-4">Nuevo paciente</a>
+        </div>
+
+        <div class="d-flex gap-4 justify-content-center">
+            <div th:each="pacientes : ${pacientes}" class="card" style="width: 18rem;">
+                <img src="img/usuario.jpg" class="card-img-top mx-auto" alt="..." style="width:50px">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${pacientes.nombre}"></h5>
+                    <h5 class="card-title" th:text="${pacientes.documentoIdentidad}">Documento:</h5>
+                    <p class="card-text" th:text="${pacientes.descripcionEnfermedad}">Descipción:</p>
+                    <p class="card-text" th:text="${pacientes.edad}"></p>
+                    <p class="card-text" th:text="${pacientes.telefono}"></p>
+                    <p class="card-text" th:text="${pacientes.profesionales.registroMedico}"></p>
+                    <!-- renderizacipon de tipo condicional para condicionales sobre todo en la tarea
+                    <div th:if="${!servicio.atencion}>
+                        <a href="#" class="btn btn-primary">Aceptar</a>
+                    </div>
+
+                     renderización para imagenes con switch
+                     <div th:switch="${servicios.atencion}">
+                        <img th:case="true" class="card-img-top" src="img/laimagen.tipo" alt="Card image cap">
+                        <img th:case="false" class="card-img-top" src="img/laotraimagen.tipo" alt="Card image cap">
+                     </>div>
+
+                     -->
+                    <!-- voy a cambiar esta etiqueta a por un form y un boton para ir a los detalles del paciente
+                    <a href="#" class="btn btn-primary">Detalles</a>
+-->
+                    <div class="d-flex gap-1 justify-content-center">
+                        <form th:action="@{/pacientes/{id}(id=${pacientes.documentoIdentidad})}" th:method="get">
+                            <button type="submit" class="btn btn-primary">Detalles</button>
+                        </form>
+                        <form th:action="@{/pacientes/{id}(id=${pacientes.documentoIdentidad})}" th:method="delete">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Nuevo Paciente</title>
+</head>
+<body>
+<main>
+    <div class="px-4 py-3 my-2 text-center">
+        <h1 class="display-5 fw-bold mb-4">Actualizar paciente</h1>
+        <div th:each="pacienteFind : ${pacienteFind}" class="col-lg-5 mx-auto">
+            <!--
+            <div class="card-body">
+                <h5 class="card-title" th:text="${pacienteFind.nombre}"></h5>
+                <h5 class="card-title" th:text="${pacienteFind.documentoIdentidad}">Documento:</h5>
+                <p class="card-text" th:text="${pacienteFind.descripcionEnfermedad}">Descipción:</p>
+                <p class="card-text" th:text="${pacienteFind.edad}"></p>
+                <p class="card-text" th:text="${pacienteFind.telefono}"></p>
+                <p class="card-text" th:text="${pacienteFind.profesionales.registroMedico}"></p>
+-->
+
+            <form th:action="@{/pacientes/{id}(id=${pacienteFind.documentoIdentidad})}" th:method="put" class="d-flex flex-column gap-3 align-items-center" >
+                <input disabled="true" th:field="*{pacienteFind.documentoIdentidad}" class="form-control" type="number" placeholder="Documento de identidad" />
+                <input th:field="*{pacienteFind.nombre}" class="form-control" type="text" placeholder="Nombre" />
+                <input th:field="${pacienteFind.edad}" class="form-control" type="number" placeholder="Edad" />
+                <input th:field="${pacienteFind.telefono}" class="form-control" type="tel" placeholder="Teléfono" />
+                <input th:field="${pacienteFind.descripcionEnfermedad}" class="form-control" type="text" placeholder="Descripción de la enfermedad" />
+                <input th:field="${pacienteFind.profesionales.registroMedico}" class="form-control" type="number" placeholder="Registro del médico" />
+                <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Actualizar paciente</button>
+            </form>
+
+        </div>
+
+
+    </div>
+</main>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+Base de datos: Hospital
+
+puerto: 
+
+Host: db.hdozmzijnduhynjhawhs.supabase.co
+Nombre: postgres
+puerto: 5432
+User: postgres
+Clave: Ejercicio2022
