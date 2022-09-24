@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Actualizar profesional</title>
+</head>
+<body>
+<main>
+    <div class="px-4 py-3 my-2 text-center">
+        <h1 class="display-5 fw-bold mb-4">Actualizar profesional</h1>
+        <div th:each="profesionalFind : ${profesionalFind}" class="col-lg-5 mx-auto">
+            <!--
+            <div class="card-body">
+                <h5 class="card-title" th:text="${pacienteFind.nombre}"></h5>
+                <h5 class="card-title" th:text="${pacienteFind.documentoIdentidad}">Documento:</h5>
+                <p class="card-text" th:text="${pacienteFind.descripcionEnfermedad}">Descipción:</p>
+                <p class="card-text" th:text="${pacienteFind.edad}"></p>
+                <p class="card-text" th:text="${pacienteFind.telefono}"></p>
+                <p class="card-text" th:text="${pacienteFind.profesionales.registroMedico}"></p>
+-->
+
+            <form th:action="@{/profesionales/{id}(id=${profesionalFind.registroMedico})}" th:method="put" class="d-flex flex-column gap-3 align-items-center" >
+                <input disabled="true" th:field="*{profesionalFind.registroMedico}" class="form-control" type="number" placeholder="REgistro médico" />
+                <input th:field="*{profesionalFind.nombreMedico}" class="form-control" type="text" placeholder="Nombre" />
+                <input th:field="${profesionalFind.profesion}" class="form-control" type="text" placeholder="Profesión" />
+                <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Actualizar profesional</button>
+            </form>
+
+        </div>
+
+
+    </div>
+</main>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

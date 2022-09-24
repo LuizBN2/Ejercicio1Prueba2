@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Profesionales</title>
+</head>
+<body>
+<main>
+    <div class="px-0 py-3 my-2 text-center">
+        <div class="px-4 py-3 my-2 text-center">
+            <h1 class="display-5 fw-bold mb-4">Profesionales</h1>
+            <a href="/profesionales/nuevo" class="btn btn-outline-secondary btn-lg px-4">Nuevo profesional</a>
+        </div>
+<!--
+        <div class="d-flex gap-4 justify-content-center">
+            <div th:each="profesionales : ${profesionales}" class="card" style="width: 18rem;">
+                <img src="img/usuario.jpg" class="card-img-top mx-auto" alt="..." style="width:50px">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${profesionales.registroMedico}"></h5>
+                    <h5 class="card-title" th:text="${profesionales.nombreMedico}"></h5>
+                    <p class="card-text" th:text="${profesionales.profesion}"></p>
+                    <div class="d-flex gap-1 justify-content-center">
+                        <form th:action="@{/profesionales/{id}(id=${profesionales.registroMedico})}" th:method="get">
+                            <button type="submit" class="btn btn-primary">Detalles</button>
+                        </form>
+                        <form th:action="@{/profesionales/{id}(id=${profesionales.registroMedico})}" th:method="delete">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+-->
+        <!-- tablas -->
+
+        <div class="justify-content-center">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Registro Médico</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Profesión</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="profesionales : ${profesionales}">
+                    <td th:text="${profesionales.registroMedico}"></td>
+                    <td th:text="${profesionales.nombreMedico}"></td>
+                    <td th:text="${profesionales.profesion}"></td>
+                    <td>
+                        <form th:action="@{/profesionales/{id}(id=${profesionales.registroMedico})}" th:method="get">
+                            <button type="submit" class="btn btn-primary">Detalles</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form th:action="@{/profesionales/{id}(id=${profesionales.registroMedico})}" th:method="delete">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+</body>
+</html>

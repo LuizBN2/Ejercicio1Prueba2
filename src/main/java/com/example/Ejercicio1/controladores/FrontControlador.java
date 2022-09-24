@@ -1,8 +1,10 @@
 package com.example.Ejercicio1.controladores;
 
 import com.example.Ejercicio1.entidades.Paciente;
+import com.example.Ejercicio1.entidades.Profesional;
 import com.example.Ejercicio1.entidades.Usuario;
 import com.example.Ejercicio1.servicios.ServiciosPaciente;
+import com.example.Ejercicio1.servicios.ServiciosProfesional;
 import com.example.Ejercicio1.servicios.ServiciosUsuario;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,14 +20,17 @@ import java.util.List;
 public class FrontControlador {
 
     ServiciosPaciente servicesP;
-    public FrontControlador(ServiciosPaciente servicesP, ServiciosUsuario servicesU){
+    public FrontControlador(ServiciosPaciente servicesP, ServiciosUsuario servicesU, ServiciosProfesional servicesProf){
         this.servicesP = servicesP;
         this.servicesU = servicesU;
+        this.servicesProf = servicesProf;
     }
 
         //NUEVO PARA LOS USUARIOS OJOJOJOJOJO  recuerde incluir el servicioUsuarios en el consctrcutos
 
     ServiciosUsuario servicesU;
+
+
 
 
     @GetMapping("/") //ruta raiz
@@ -67,6 +72,34 @@ public class FrontControlador {
         model.addAttribute("pacienteFind", pacienteFind);
         return "actualizar-paciente";
     }
+
+    @GetMapping("/interface")
+    public String interfaces(){
+        return "interface";
+    }
+
+    ServiciosProfesional servicesProf;
+    @GetMapping("/profesionales")
+    public String profesionales(Model model){
+        List<Profesional> profesionales = this.servicesProf.getListaProfesionales();
+        model.addAttribute("profesionales", profesionales);
+        return "profesionales";
+    }
+
+
+    @GetMapping("/profesionales/nuevo")
+    public String nuevoProfesional(Model model){
+        model.addAttribute("profesional", new Profesional());
+        return "nuevo-profesional";
+    }
+
+    @GetMapping("profesionales/{id}")
+    public String actualizarProfesional(@PathVariable Long id, Model model){
+        Profesional profesionalFind = this.servicesProf.getProfesional(id);
+        model.addAttribute("profesionalFind", profesionalFind);
+        return "actualizar-profesional";
+    }
+
 
 
 }
